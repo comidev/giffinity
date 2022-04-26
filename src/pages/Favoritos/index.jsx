@@ -19,6 +19,9 @@ export default function Favoritos() {
                     favs.reverse();
                     setFavs(favs);
                 })
+                .catch(() => {
+                    setFavs(null);
+                })
                 .finally(() => {
                     setLoading(false);
                 });
