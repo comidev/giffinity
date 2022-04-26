@@ -10,4 +10,4 @@ export const SEARCH = ({ keyword, limit = 25, lang = "es", page = INITIAL_PAGE }
 
 export const TRENDINGS = `${API_URL}/trending/searches?api_key=${API_KEY}`;
 
-export const ENDPOINT = "https://giffinity.herokuapp.com/";
+export const ENDPOINT = "https://giffinity.herokuapp.com";
