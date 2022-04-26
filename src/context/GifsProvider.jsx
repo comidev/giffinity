@@ -16,11 +16,14 @@ export function GifsProvider({ children }) {
         function () {
             setLoadingPageGifs(true);
             setLoading(true);
-            getGifs({ keyword }).then((nextGifs) => {
-                setGiffis(nextGifs);
-                setLoadingPageGifs(false);
-                setLoading(false);
-            });
+            getGifs({ keyword })
+                .then((nextGifs) => {
+                    setGiffis(nextGifs);
+                })
+                .finally(() => {
+                    setLoadingPageGifs(false);
+                    setLoading(false);
+                });
         },
         [keyword]
     );
@@ -29,10 +32,13 @@ export function GifsProvider({ children }) {
         setLoading(true);
         setPage((prev) => {
             const newPage = prev + 1;
-            getGifs({ keyword, page: newPage }).then((nextGifs) => {
-                setGiffis((prevGifs) => prevGifs.concat(nextGifs));
-                setLoading(false);
-            });
+            getGifs({ keyword, page: newPage })
+                .then((nextGifs) => {
+                    setGiffis((prevGifs) => prevGifs.concat(nextGifs));
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
             return newPage;
         });
     }, [keyword]);

@@ -7,10 +7,13 @@ export default function useTrendings() {
 
     useEffect(function () {
         setLoading(true);
-        getTrendings().then((trends) => {
-            setTrendings(trends);
-            setLoading(false);
-        });
+        getTrendings()
+            .then((trends) => {
+                setTrendings(trends);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     }, []);
 
     return { trendings, loading };

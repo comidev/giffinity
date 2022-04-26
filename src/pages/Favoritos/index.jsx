@@ -14,11 +14,14 @@ export default function Favoritos() {
     useEffect(() => {
         if (Boolean(user)) {
             setLoading(true);
-            getFavs(user.jwt).then((favs) => {
-                favs.reverse();
-                setFavs(favs);
-                setLoading(false);
-            });
+            getFavs(user.jwt)
+                .then((favs) => {
+                    favs.reverse();
+                    setFavs(favs);
+                })
+                .finally(() => {
+                    setLoading(false);
+                });
         }
     }, [user, setFavs]);
 
